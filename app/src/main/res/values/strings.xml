@@ -6,4 +6,15 @@
     <string name="category">Category</string>
     <string name="ini_adalah_halaman_category">Ini adalah Halaman Category</string>
     <string name="detail_category">Detail Category</string>
+    <string name="detail_name">Detail Name</string>
+    <string name="detail_description">Detail Description</string>
+    <string name="to_profile">Profile</string>
+    <string name="dialog">Dialog</string>
+    <string name="pemain_nba">Pemain NBA</string>
+    <string name="stephen_curry">Stephen Curry</string>
+    <string name="lebron_james">Lebron James</string>
+    <string name="kevin_durant">Kevin Durant</string>
+    <string name="james_harden">James Harden</string>
+    <string name="close">Close</string>
+    <string name="choose">Choose</string>
 </resources>
