@@ -19,28 +19,28 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/rb_saf"
+            android:id="@+id/rb_sc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/stephen_curry" />
 
         <RadioButton
-            android:id="@+id/rb_mou"
+            android:id="@+id/rb_lj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/lebron_james" />
 
         <RadioButton
-            android:id="@+id/rb_lvg"
+            android:id="@+id/rb_kd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/kevin_durant" />
 
         <RadioButton
-            android:id="@+id/rb_moyes"
+            android:id="@+id/rb_jh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
