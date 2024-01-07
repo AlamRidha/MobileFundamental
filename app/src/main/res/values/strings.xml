@@ -17,4 +17,10 @@
     <string name="james_harden">James Harden</string>
     <string name="close">Close</string>
     <string name="choose">Choose</string>
+    <string name="view_model_activity">View Model Activity</string>
+    <string name="navigation_activity">Navigation Activity</string>
+    <string name="page_one_fragment">Page One Fragment</string>
+    <string name="page_two_fragment">Page Two Fragment</string>
+    <string name="tab_text_1">Page One</string>
+    <string name="tab_text_2">Page Two</string>
 </resources>

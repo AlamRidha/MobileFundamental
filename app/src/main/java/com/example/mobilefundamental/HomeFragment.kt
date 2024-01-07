@@ -1,11 +1,13 @@
 package com.example.mobilefundamental
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.mobilefundamental.viewmodel.ViewModelActivity
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -23,6 +25,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val btnCategory: Button = view.findViewById(R.id.btn_category)
         btnCategory.setOnClickListener(this)
+
+        val btnVm: Button = view.findViewById(R.id.btn_view_model)
+        btnVm.setOnClickListener(this)
+
+        val btnNa: Button = view.findViewById(R.id.btn_navigation)
+        btnNa.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -39,6 +47,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 addToBackStack(null)
                 commit()
             }
+        } else if (v.id == R.id.btn_view_model) {
+            val intentVm = Intent(requireActivity(), ViewModelActivity::class.java)
+            startActivity(intentVm)
+        } else if (v.id == R.id.btn_navigation) {
+            val intentNa = Intent(requireActivity(), NavigationActivity::class.java)
+            startActivity(intentNa)
         }
     }
 
