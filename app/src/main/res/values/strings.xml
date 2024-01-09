@@ -23,4 +23,10 @@
     <string name="page_two_fragment">Page Two Fragment</string>
     <string name="tab_text_1">Page One</string>
     <string name="tab_text_2">Page Two</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="title">Judul</string>
+    <string name="description">Description</string>
+    <string name="write_your_review_here">Write your review here</string>
+    <string name="review">Review</string>
+    <string name="send">Send</string>
 </resources>

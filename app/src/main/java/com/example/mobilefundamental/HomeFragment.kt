@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.mobilefundamental.navigation.NavigationActivity
+import com.example.mobilefundamental.retrofitac.ui.RestaurantActivity
 import com.example.mobilefundamental.viewmodel.ViewModelActivity
 
 
@@ -31,6 +33,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         val btnNa: Button = view.findViewById(R.id.btn_navigation)
         btnNa.setOnClickListener(this)
+
+        val btnRa: Button = view.findViewById(R.id.btn_retrofit)
+        btnRa.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -53,6 +58,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
         } else if (v.id == R.id.btn_navigation) {
             val intentNa = Intent(requireActivity(), NavigationActivity::class.java)
             startActivity(intentNa)
+        } else if (v.id == R.id.btn_retrofit) {
+            val intentRa = Intent(requireActivity(), RestaurantActivity::class.java)
+            startActivity(intentRa)
         }
     }
 

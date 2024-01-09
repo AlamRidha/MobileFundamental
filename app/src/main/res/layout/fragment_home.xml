@@ -30,6 +30,14 @@
         android:text="@string/navigation_activity" />
 
     <Button
+        android:id="@+id/btn_retrofit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/retrofit" />
+
+    <Button
         android:id="@+id/btn_view_model"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
