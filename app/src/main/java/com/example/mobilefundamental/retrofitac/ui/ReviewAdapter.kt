@@ -29,8 +29,7 @@ class ReviewAdapter : ListAdapter<CustomerReviewsItem, ReviewAdapter.MyViewHolde
     }
 
     companion object {
-        val DIFF_CALL
-        BACK = object : DiffUtil.ItemCallback<CustomerReviewsItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CustomerReviewsItem>() {
             override fun areItemsTheSame(
                 oldItem: CustomerReviewsItem,
                 newItem: CustomerReviewsItem
