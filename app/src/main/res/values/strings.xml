@@ -29,4 +29,9 @@
     <string name="write_your_review_here">Write your review here</string>
     <string name="review">Review</string>
     <string name="send">Send</string>
+    <string name="panjang">Panjang</string>
+    <string name="lebar">Lebar</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="hitung">Hitung</string>
+    <string name="hasil">Hasil</string>
 </resources>
