@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MobileFundamental"
         tools:targetApi="31">
         <activity
+            android:name=".livedata.LiveDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".retrofitac.ui.RestaurantActivity"
             android:exported="false" />
         <activity

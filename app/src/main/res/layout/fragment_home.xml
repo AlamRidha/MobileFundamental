@@ -45,4 +45,12 @@
         android:layout_marginBottom="16dp"
         android:text="@string/view_model_activity" />
 
+    <Button
+        android:id="@+id/btn_livedata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Live Data Activity" />
+
 </LinearLayout>

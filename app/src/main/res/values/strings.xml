@@ -34,4 +34,6 @@
     <string name="tinggi">Tinggi</string>
     <string name="hitung">Hitung</string>
     <string name="hasil">Hasil</string>
+    <string name="hello_user">Hello User</string>
+    <string name="seconds">%d seconds elapsed</string>
 </resources>
