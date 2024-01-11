@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -31,85 +32,39 @@ class RestaurantActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        //  initialization for viewModel
+        val restaurantViewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[RestaurantViewModel::class.java]
+
+        //  call restairaunt data from viewModel
+        restaurantViewModel.restaurant.observe(this) { restaurant ->
+            setRestaurantData(restaurant)
+        }
+
         //  setting layout manager for recycle view
         val layoutManager = LinearLayoutManager(this)
         binding.rvReview.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvReview.addItemDecoration(itemDecoration)
 
-        //  call function find restaurant
-        findRestaurant()
+        //  call listReview data from viewModel
+        restaurantViewModel.listReview.observe(this) { customerReview ->
+            setReviewData(customerReview)
+        }
+
+        //  call isLoading data from viewModel
+        restaurantViewModel.isLoading.observe(this) { it ->
+            showLoading(it)
+        }
+
 
         binding.btnSend.setOnClickListener { view ->
-            postReview(binding.edReview.text.toString())
+            //  call function postReview from viewModel
+            restaurantViewModel.postReview(binding.edReview.text.toString())
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-    }
-
-    private fun postReview(review: String) {
-        showLoading(true)
-        val client = ApiConfig.getApiService().postReview(RESTAURANT_ID, "Dicoding", review)
-        client.enqueue(object : Callback<PostReviewResponse> {
-            override fun onResponse(
-                call: Call<PostReviewResponse>,
-                response: Response<PostReviewResponse>
-            ) {
-                showLoading(false)
-                val responBody = response.body()
-                if (response.isSuccessful && responBody != null) {
-                    setReviewData(responBody.customerReviews)
-                } else {
-                    Log.d(TAG, "onFailure ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<PostReviewResponse>, t: Throwable) {
-                showLoading(false)
-                Log.d(TAG, "onFailure ${t.message}")
-            }
-
-        })
-    }
-
-    private fun findRestaurant() {
-        showLoading(true)
-        //  call client to request API
-        val client = ApiConfig.getApiService().getRestaurant(RESTAURANT_ID)
-        client.enqueue(object : Callback<RestaurantResponse> {
-            override fun onResponse(
-                call: Call<RestaurantResponse>,
-                response: Response<RestaurantResponse>
-            ) {
-                showLoading(false)
-                //  cek response is successfull or not
-                if (response.isSuccessful) {
-                    val responBody = response.body()
-                    if (responBody != null) {
-                        //  get data restaurant, name, description and photo
-                        setRestaurantData(responBody.restaurant)
-                        //  get review data then put to recycle view
-                        setReviewData(responBody.restaurant.customerReviews)
-                    }
-                } else {
-                    Log.e(TAG, "onFailure ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<RestaurantResponse>, t: Throwable) {
-                showLoading(false)
-                Log.e(TAG, "onFailure ${t.message}")
-            }
-
-        })
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        //  function for progress bar
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
         }
     }
 
@@ -121,6 +76,10 @@ class RestaurantActivity : AppCompatActivity() {
         binding.edReview.setText("")
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     private fun setRestaurantData(restaurant: Restaurant) {
         //  function for set the name for restaurant
         binding.tvTitle.text = restaurant.name
@@ -128,10 +87,5 @@ class RestaurantActivity : AppCompatActivity() {
         Glide.with(this@RestaurantActivity)
             .load("https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}")
             .into(binding.ivPicture)
-    }
-
-    companion object {
-        private const val TAG = "MainActivity"
-        private const val RESTAURANT_ID = "uewq1zg2zlskfw1e867"
     }
 }
